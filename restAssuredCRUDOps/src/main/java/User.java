@@ -6,7 +6,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class
+User {
 
     private String username;
     private String firstName;
@@ -15,11 +16,6 @@ public class User {
     private String password;
     private String phone;
     private int userStatus;
-
-
-
-
-
 
 }
 
