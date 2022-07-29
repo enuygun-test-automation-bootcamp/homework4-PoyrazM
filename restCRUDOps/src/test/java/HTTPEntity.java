@@ -18,6 +18,8 @@ import static io.restassured.RestAssured.baseURI;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+@TestInstance(TestInstance.Lifecycle.PER_METHOD)
+@TestMethodOrder(MethodOrderer.class)
 public class HTTPEntity {
     Store store;
     Faker FAKER = new Faker();
