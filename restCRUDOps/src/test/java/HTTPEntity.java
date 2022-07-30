@@ -5,7 +5,10 @@ import com.github.javafaker.Faker;
 import com.github.javafaker.service.FakeValuesService;
 import com.github.javafaker.service.RandomService;
 import org.junit.Test;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -135,7 +138,6 @@ public class HTTPEntity {
                 new HttpEntity<String>("",this.headers),
                 String.class);
 
-        System.out.println(deleteResultAsJson.getBody());
         assertEquals(200,deleteResultAsJson.getStatusCodeValue());
         assertNotNull(deleteResultAsJson.getStatusCode(),"200 OK");
     }
