@@ -94,6 +94,8 @@ public class RestAssured {
                         accept(ContentType.JSON).
                         header("Content-Type","application/json").
                         header("Connection","keep-alive").
+                        param("id",5858).
+                        param("complete",true).
                         get("store/order/"+generateOrder().getId());
 
 
@@ -126,6 +128,7 @@ public class RestAssured {
 
         Assert.assertEquals(200,response.getStatusCode());
         Assert.assertEquals("HTTP/1.1 200 OK",response.getStatusLine());
+
     }
 
     // Oluşturduğum orderı EP'ye delete requesti atarak silmek istiyorum. Delete işlemi apide doğru çalışıyorsa

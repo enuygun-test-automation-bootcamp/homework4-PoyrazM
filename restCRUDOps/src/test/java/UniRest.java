@@ -60,14 +60,15 @@ public class UniRest {
         ObjectMapper mapper = new ObjectMapper();
         String jsonString = mapper.writeValueAsString(storeData);
 
-        HttpResponse<String> response =
+        HttpResponse<JsonNode> response =
         Unirest
                 .post("https://petstore.swagger.io/v2/store/order")
                 .header("Content-Type","application/json")
                 .body(jsonString)
-                .asString();
+                .asJson();
 
         Assert.assertEquals(200,response.getStatus());
+        Assert.assertEquals(5858,response.getBody().getObject().get("id"));
     }
 
 
@@ -85,9 +86,10 @@ public class UniRest {
                         .asJson();
 
         Assert.assertEquals(200,response.getStatus());
-
+        Assert.assertEquals(5858,response.getBody().getObject().get("id"));
         System.out.println("Response Body :\t"+response.getBody());
         System.out.println("Response Status :\t"+response.getStatus()+response.getStatusText());
+
 
     }
 
@@ -103,6 +105,7 @@ public class UniRest {
                         .asJson();
 
         Assert.assertEquals(200,response.getStatus());
+        Assert.assertEquals(7,response.getBody().getObject().get("sold"));
         System.out.println(response.getBody());
     }
 
@@ -135,6 +138,7 @@ public class UniRest {
                         .asJson();
 
         Assert.assertEquals(200,response.getStatus());
+        Assert.assertEquals(7,response.getBody().getObject().get("sold"));
         System.out.println(response.getBody());
     }
 }
